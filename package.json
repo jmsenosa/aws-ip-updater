@@ -1,0 +1,25 @@
+{
+  "name": "aws-ip-updater",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ip": "node app/index.js"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmsenosa/aws-ip-updater.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmsenosa/aws-ip-updater/issues"
+  },
+  "homepage": "https://github.com/jmsenosa/aws-ip-updater#readme",
+  "dependencies": {
+    "aws-sdk": "^2.447.0",
+    "ip": "^1.1.5",
+    "whatismyip": "^1.1.4"
+  }
+}
