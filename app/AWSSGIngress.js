@@ -22,6 +22,7 @@ class AWSSGIngress {
       }, (err, data) => {
   
         if (err === null) {
+          // console.log(data);
           resolve(data);
         } else { 
           reject(err);
@@ -32,11 +33,12 @@ class AWSSGIngress {
   }
   
   authSecurityGroupIngress (IpPermission) {
+    let params = { 
+      GroupId: this.sgID[0],
+      IpPermissions: IpPermission
+    }; 
     return new Promise((resolve, reject) => {
-      this.ec2.authorizeSecurityGroupIngress({ 
-        GroupIds: this.sgID,
-        IpPermissions: IpPermission
-      }, (err, data) => {
+      this.ec2.authorizeSecurityGroupIngress(params, (err, data) => {
         if (err === null) {
           resolve(data);
         } else { 
@@ -47,6 +49,7 @@ class AWSSGIngress {
   }
 
   revokeSecurityGroupIngress (IpPermission) {
+    
     return new Promise((resolve, reject) => {
       
       if (IpPermission == "") {
@@ -54,9 +57,11 @@ class AWSSGIngress {
       }
 
       var param = {
-        GroupIds: this.sgID,
+        GroupId: this.sgID[0],
         IpPermissions: IpPermission
       }; 
+
+      // console.log("params: ",param);
 
       this.ec2.revokeSecurityGroupIngress(param, (err, data) => { 
         if (err === null) {
